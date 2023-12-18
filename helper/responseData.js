@@ -1,9 +1,9 @@
-function responseReturn(res,status,sucess,data){
+function responseReturn(res, status, success, data) {
     res.send(status, {
-        sucess: sucess,
+        success: success,
         data: data
-      });
+    })
 }
-module.exports={
-    responseReturn:responseReturn,
+module.exports = {
+    responseReturn: responseReturn,
 }

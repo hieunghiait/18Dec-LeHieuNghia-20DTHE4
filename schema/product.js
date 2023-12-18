@@ -26,6 +26,10 @@ const Schema = new mongoose.Schema({
   price: {
     type: Number,
     default: 0
+  },
+  isDelete: {
+    type: Boolean,
+    default: false
   }
 })
 module.exports = mongoose.model('products', Schema)

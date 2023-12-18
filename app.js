@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 var itemsRouter = require('./routes/items')
 var productRouter = require('./routes/products')
+const message = require('./helper/message')
 
 var app = express()
 
@@ -22,19 +23,19 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
+
+mongoose.connect("mongodb://127.0.0.1:27017/NNPTUDM")
+mongoose.connection.once('open', function () {
+  console.log(message.connect_mongdb)
+})
+mongoose.connection.on('error', function () {
+  console.log(message.error_mongdb)
+})
+
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use('/items', itemsRouter)
 app.use('/products', productRouter)
-
-mongoose.connect("mongodb://127.0.0.1:27017/TestS2")
-mongoose.connection.once('open', function () {
-  console.log("thanh cong")
-})
-mongoose.connection.on('error', function () {
-  console.log(" k thanh cong")
-})
-
 
 
 // catch 404 and forward to error handler
