@@ -11,4 +11,5 @@ module.exports = {
     user_is_not_exist: "User is not exist",
     delete_product_successfully: 'Delete product successfully',
     product_create_failed: 'Product create failed',
+    product_is_existed: 'Product is existed',
 }
