@@ -20,4 +20,5 @@ module.exports = {
     not_permission: 'You are not permission',
     not_found_secret_key: 'Not found secret key',
     token_expired: 'Token expired',
+    user_create_failed: 'User create failed',
 }

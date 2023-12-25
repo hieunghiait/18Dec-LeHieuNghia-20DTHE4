@@ -36,6 +36,13 @@ const login = async (req, res) => {
 }
 const register = async (req, res) => {
     const {email, password, userName} = req.body
+    const userExisted = await userSchema.findOne({email})
+    if(userExisted){
+        return res.status(400).json({
+            success: false,
+            message: 'Email is existed'
+        })
+    }
     const hashPassword = bcrypt.hashSync(password, salt)
     const user = await userSchema.create({
         email,

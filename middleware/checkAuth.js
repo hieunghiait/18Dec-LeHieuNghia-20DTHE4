@@ -6,10 +6,10 @@ const authenticateJWT = (req, res, next) => {
     const authHeader = req.headers.authorization
     if(authHeader){
         const token = authHeader.split(' ')[1]
-        
         try {
             const decodeToken = jwt.verify(token, process.env.SECRET_KEY)
             req.user = decodeToken.role
+            console.log(req.user)
             next()
         } catch (error) {
             if(error.name = 'TokenExpiredError'){
@@ -40,16 +40,16 @@ const authenticateJWT = (req, res, next) => {
     
     }
 }
-const checkAuthorizationAdmin = (req, res, next) => {
-    if(req.user && req.user.role === 'admin'){
-        next()
-    }else 
-    {
-        res.status(403).json({
-            status: false, 
-            message: 'Access denied. Admin privileges required.'
-        })
+const checkAuthorizationAdmin = async (req, res, next) => {
+    const user = req.user
+    console.log(user)
+    if(!user || !user.role !== 'admin'){
+        return res.status(403).json({
+            success: false,
+            message: 'Access denied. You must be an administrator.'
+        });
     }
+    next()
 }
 module.exports = {
     authenticateJWT, 
