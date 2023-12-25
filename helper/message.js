@@ -12,4 +12,12 @@ module.exports = {
     delete_product_successfully: 'Delete product successfully',
     product_create_failed: 'Product create failed',
     product_is_existed: 'Product is existed',
+    email_is_existed: 'Email is existed',
+    register_failed: 'Register failed',
+    user_is_not_existed: 'User is not existed',
+    message_not_authenticate: 'You are not authenticate',
+    not_found_token: 'Not found token',
+    not_permission: 'You are not permission',
+    not_found_secret_key: 'Not found secret key',
+    token_expired: 'Token expired',
 }
