@@ -4,13 +4,14 @@ var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 var mongoose = require('mongoose')
-
+require('dotenv').config()
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 var itemsRouter = require('./routes/items')
 var productRouter = require('./routes/products')
 const message = require('./helper/message')
-
+const authController = require('./controller/authController')
+const authRouter = require('./routes/auth')
 var app = express()
 
 // view engine setup
@@ -36,7 +37,7 @@ app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use('/items', itemsRouter)
 app.use('/products', productRouter)
-
+app.use('/auth', authRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
